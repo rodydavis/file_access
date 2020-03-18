@@ -2,6 +2,16 @@
 
 An abstract way to handle files on iOS, Android, Desktop and Web!
 
+Installing: 
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  file_access:
+    git: https://github.com/rodydavis/file_access
+```
+
 ## Setup
 
 - iOS: https://github.com/miguelpruivo/flutter_file_picker/wiki/Setup#ios
