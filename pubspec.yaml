@@ -9,14 +9,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  file_picker: ^1.5.0+2
+  image_picker: ^0.6.3+4
   file_chooser:
     git:
       url: https://github.com/google/flutter-desktop-embedding
       path: plugins/file_chooser
-
-  path: any
-  file_picker: ^1.5.0+2
-  image_picker: ^0.6.3+4
 
 dev_dependencies:
   flutter_test:
