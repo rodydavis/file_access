@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:file_access/file_access.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +29,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   FileX _file;
+  bool isImage = false;
   bool _loading = false;
 
   @override
@@ -45,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () async {
             if (mounted)
               setState(() {
+                isImage = false;
                 _file = null;
                 _loading = true;
               });
@@ -63,6 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
             if (mounted)
               setState(() {
                 _file = null;
+                isImage = true;
                 _loading = true;
               });
             final _newFile = await pickImage();
@@ -80,6 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
             if (mounted)
               setState(() {
                 _file = null;
+                isImage = false;
                 _loading = true;
               });
             final _newFile = await pickVideo();
@@ -102,6 +108,13 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Text(file.path);
+          }
+          if (isImage) {
+            final _bytes = Uint8List.fromList(snapshot.data);
+            return Image.memory(
+              _bytes,
+              fit: BoxFit.contain,
+            );
           }
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,

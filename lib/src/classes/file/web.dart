@@ -1,14 +1,14 @@
 import 'dart:convert';
-import 'dart:html';
 
 import 'impl.dart';
 
 class FileX extends FileXBase {
   final String path;
-  final File _file;
+  final List<int> _bytes;
+  Encoding _encoding = utf8;
 
   FileX(this.path, {List<int> bytes = const []})
-      : _file = File(bytes, path),
+      : _bytes = bytes,
         super(path);
 
   @override
@@ -19,27 +19,18 @@ class FileX extends FileXBase {
   @override
   Future<FileX> writeAsString(String data, {Encoding encoding}) {
     List<int> _data;
-    if (encoding != null) {
-      _data = encoding.encode(data);
-    } else {
-      _data = utf8.encode(data);
-    }
+    _encoding = encoding ?? utf8;
+    _data = _encoding.encode(data);
     return writeAsBytes(_data);
   }
 
   @override
   Future<List<int>> readAsBytes() async {
-    final reader = new FileReader();
-    reader.readAsArrayBuffer(_file);
-    await reader.onLoadEnd.first;
-    return reader.result as List<int>;
+    return _bytes;
   }
 
   @override
   Future<String> readAsString() async {
-    final reader = new FileReader();
-    reader.readAsText(_file);
-    await reader.onLoadEnd.first;
-    return reader.result;
+    return _encoding.decode(_bytes);
   }
 }

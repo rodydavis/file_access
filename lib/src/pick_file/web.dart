@@ -57,7 +57,8 @@ Future<List<FileX>> _open(bool multiple, bool folders,
       final _loaded = await _listen(reader.onLoad);
       if (!_loaded) continue;
       final _bytes = reader.result as List<int>;
-      _files.add(await _base.writeAsBytes(_bytes));
+      final _newFile = await _base.writeAsBytes(_bytes);
+      _files.add(_newFile);
     } catch (e) {}
   }
   return _files;
