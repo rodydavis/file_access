@@ -70,13 +70,13 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.0.0+1"
+    version: "1.0.2"
   file_chooser:
     dependency: transitive
     description:
       path: "plugins/file_chooser"
       ref: HEAD
-      resolved-ref: "17c7ad89a8e38aa1f1d7fc4906d5a1d077f0fc9d"
+      resolved-ref: "8e65865117b7dc212b61839f90fc5b7b1553b05e"
       url: "https://github.com/google/flutter-desktop-embedding"
     source: git
     version: "0.1.0"
