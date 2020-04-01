@@ -1,6 +1,6 @@
 import 'package:file_access/file_access.dart';
-import 'package:file_access/src/constants.dart';
-import 'package:file_chooser/file_chooser.dart';
+// import 'package:file_access/src/constants.dart';
+// import 'package:file_chooser/file_chooser.dart';
 
 import 'dart:io';
 
@@ -24,14 +24,15 @@ Future<FileX> pickImage() async {
     var selection = await ImagePicker.pickImage(source: ImageSource.gallery);
     return _add(selection);
   }
-  final _files = await _open(false, false, allowedTypes: [
-    FileTypeFilterGroup(
-      label: 'image',
-      fileExtensions: kImageExtensions,
-    ),
-  ]);
-  if (_files == null || _files.isEmpty) return null;
-  return _files.first;
+  // final _files = await _open(false, false, allowedTypes: [
+  //   FileTypeFilterGroup(
+  //     label: 'image',
+  //     fileExtensions: kImageExtensions,
+  //   ),
+  // ]);
+  // if (_files == null || _files.isEmpty) return null;
+  // return _files.first;
+  return null;
 }
 
 Future<FileX> pickVideo() async {
@@ -39,31 +40,34 @@ Future<FileX> pickVideo() async {
     var selection = await ImagePicker.pickVideo(source: ImageSource.gallery);
     return _add(selection);
   }
-  final _files = await _open(false, false, allowedTypes: [
-    FileTypeFilterGroup(
-      label: 'video',
-      fileExtensions: kVideoExtensions,
-    ),
-  ]);
-  if (_files == null || _files.isEmpty) return null;
-  return _files.first;
+  // final _files = await _open(false, false, allowedTypes: [
+  //   FileTypeFilterGroup(
+  //     label: 'video',
+  //     fileExtensions: kVideoExtensions,
+  //   ),
+  // ]);
+  // if (_files == null || _files.isEmpty) return null;
+  // return _files.first;
+  return null;
 }
 
-Future<List<FileX>> _open(bool multiple, bool folders,
-    {List<FileTypeFilterGroup> allowedTypes}) async {
-  if (Platform.isMacOS || Platform.isLinux || Platform.isWindows) {
-    final results = await showOpenPanel(
-      allowedFileTypes: allowedTypes,
-      canSelectDirectories: folders,
-      allowsMultipleSelection: multiple,
-    );
-    if (results.canceled) return null;
-    final List<FileX> _files = [];
-    for (final item in results.paths) {
-      _files.add(await _add(File(item)));
-    }
-    return _files;
-  }
+Future<List<FileX>> _open(
+  bool multiple,
+  bool folders,
+) async {
+  // if (Platform.isMacOS || Platform.isLinux || Platform.isWindows) {
+  //   final results = await showOpenPanel(
+  //     allowedFileTypes: allowedTypes,
+  //     canSelectDirectories: folders,
+  //     allowsMultipleSelection: multiple,
+  //   );
+  //   if (results.canceled) return null;
+  //   final List<FileX> _files = [];
+  //   for (final item in results.paths) {
+  //     _files.add(await _add(File(item)));
+  //   }
+  //   return _files;
+  // }
   if (Platform.isIOS || Platform.isAndroid) {
     final List<FileX> _files = [];
     if (multiple) {

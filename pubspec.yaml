@@ -1,6 +1,7 @@
 name: file_access
 description: A Flutter package to handel files on Web, Desktop and Mobile instead of File.io
 version: 1.0.3
+author: Rody Davis <rody.davis.jr@gmail.com>
 homepage: https://github.com/rodydavis/file_access
 
 environment:
@@ -11,10 +12,10 @@ dependencies:
     sdk: flutter
   file_picker: ^1.5.0+2
   image_picker: ^0.6.3+4
-  file_chooser:
-    git:
-      url: https://github.com/google/flutter-desktop-embedding
-      path: plugins/file_chooser
+  # file_chooser:
+  #   git:
+  #     url: https://github.com/google/flutter-desktop-embedding
+  #     path: plugins/file_chooser
 
 dev_dependencies:
   flutter_test:
