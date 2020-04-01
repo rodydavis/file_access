@@ -16,7 +16,18 @@ dependencies:
 
 ## Setup
 
-- iOS: https://github.com/miguelpruivo/flutter_file_picker/wiki/Setup#ios
+### Web
+
+Add the following line to your body to make it work in Safari:
+
+```html
+<input type="file" style="visibility:hidden;" id="file-picker" />
+```
+
+### IOS
+
+https://github.com/miguelpruivo/flutter_file_picker/wiki/Setup#ios
+
 
 ## Getting Started
 

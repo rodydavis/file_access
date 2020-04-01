@@ -1,6 +1,6 @@
 name: file_access
 description: A Flutter package to handel files on Web, Desktop and Mobile instead of File.io
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/rodydavis/file_access
 
 environment:
