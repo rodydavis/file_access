@@ -49,8 +49,17 @@ Future<FileX> pickVideo() async {
   return _files.first;
 }
 
-Future<List<FileX>> _open(bool multiple, bool folders,
-    {List<FileTypeFilterGroup> allowedTypes}) async {
+Future<List<FileX>> open(bool multiple, bool folders, {List<String> allowedTypes, String label}) async {
+  final _files = await _open(multiple, folders, allowedTypes: [
+    FileTypeFilterGroup(
+      label: label ?? allowedTypes.join(","),
+      fileExtensions: allowedTypes,
+    ),
+  ]);
+  return _files;
+}
+
+Future<List<FileX>> _open(bool multiple, bool folders, {List<FileTypeFilterGroup> allowedTypes}) async {
   if (Platform.isMacOS || Platform.isLinux || Platform.isWindows) {
     final results = await showOpenPanel(
       allowedFileTypes: allowedTypes,

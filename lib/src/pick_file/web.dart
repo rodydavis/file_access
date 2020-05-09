@@ -34,8 +34,16 @@ Future<List<FileX>> openFiles() async {
   return _files;
 }
 
-Future<List<FileX>> _open(bool multiple, bool folders,
-    [String types = '*']) async {
+Future<List<FileX>> open(bool multiple, bool folders, {List<String> allowedTypes, String label}) async {
+  final _files = await _open(
+    multiple,
+    folders,
+    allowedTypes.map((c) => '.$c').join(","),
+  );
+  return _files;
+}
+
+Future<List<FileX>> _open(bool multiple, bool folders, [String types = '*']) async {
   html.InputElement _filePicker = html.querySelector('#file-picker');
   final _upload = _filePicker ?? html.FileUploadInputElement();
   _upload.accept = types;

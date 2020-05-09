@@ -15,3 +15,7 @@ Future<FileX> pickImage() async {
 Future<FileX> pickVideo() async {
   throw 'Platform Not Supported';
 }
+
+Future<List<FileX>> open(bool multiple, bool folders, {List<String> allowedTypes, String label}) async {
+  throw 'Platform Not Supported';
+}
