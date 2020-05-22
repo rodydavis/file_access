@@ -1,9 +1,8 @@
+import 'dart:io';
+
 import 'package:file_access/file_access.dart';
 import 'package:file_access/src/constants.dart';
 import 'package:file_chooser/file_chooser.dart';
-
-import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -83,10 +82,5 @@ Future<List<FileX>> _open(bool multiple, bool folders,
 }
 
 Future<FileX> _add(File file) async {
-  try {
-    final _base = FileX(file.path);
-    final _bytes = await file.readAsBytes();
-    return await _base.writeAsBytes(_bytes);
-  } catch (e) {}
-  return null;
+  return Future.value(FileX(file.path));
 }
